@@ -1,4 +1,4 @@
-Welcome to OpenOCD!
+Welcome to (Level Home) OpenOCD!
 ===================
 
 OpenOCD provides on-chip programming and debugging support with a
@@ -19,11 +19,37 @@ Pro).
 
 This README file contains an overview of the following topics:
 
+- Level Home OpenOCD setup
 - quickstart instructions,
 - how to find and build more OpenOCD documentation,
 - list of the supported hardware,
 - the installation and build process,
 - packaging tips.
+
+=========================================
+Level Home OpenOCD setup and installation
+=========================================
+
+Follow the steps below to setup and install the Level Home fork of OpenOCD
+
+1. Clone the Level OpenOCD fork @
+    https://github.com/timothy-lee2415/openocd
+    - reach out to timothy.lee@level.co for permissions
+
+2. Navigate to the new repo and update its submodules
+    cd openocd
+    git submodule update --init -recursive --progress
+
+3. Install openocd build dependencies
+    brew install make automake capstone
+
+4. Configure and begin the build
+    ./bootstrap
+    CAPSTONE_CFLAGS="-I/opt/homebrew/Cellar/capstone/4.0.2/include/capstone -I/opt/homebrew/include" ./configure --disable-werror
+    make
+
+5. Install OpenOCD
+    sudo make install
 
 
 ============================
